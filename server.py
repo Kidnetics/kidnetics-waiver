@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, Response
 from flask.ext.httpauth import HTTPDigestAuth
 from flask.ext.sqlalchemy import SQLAlchemy
+from datetime import datetime
+import json
 import os
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'kidnetics'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'HEROKU_POSTGRESQL_CYAN_URL'
-db = SQLAlchemy(app)
 auth = HTTPDigestAuth()
 
 users = {
@@ -23,7 +23,11 @@ def get_pw(username):
 @auth.login_required
 def root():
 	if request.method=='POST':
-		print(request.form)
+		with open("static\\waivers\\"+request.form['name'].replace(' ', '.')+'_'+datetime.now().strftime("%y.%m.%d")+'.json', 'w') as report:
+			form=dict(request.form)
+			form={i:j[0] for i,j in form.items() }
+			form['children']=[dict(zip(['Name', 'DOB'], i.split(','))) for i in form['children'].split(";")]
+			report.write(json.dumps(form, sort_keys=True, indent=4, separators=(',', ': ')))
 	return render_template("index.html")
 
 @app.route('/<path>')
