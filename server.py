@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, Response
 from flask.ext.httpauth import HTTPDigestAuth
 from flask.ext.sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'kidnetics'
