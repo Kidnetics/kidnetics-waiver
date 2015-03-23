@@ -4,4 +4,5 @@ httpauth==0.2
 itsdangerous==0.24
 Jinja2==2.7.3
 MarkupSafe==0.23
+gunicorn==19.1.1
 Werkzeug==0.10.1
