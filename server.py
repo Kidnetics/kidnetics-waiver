@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'kidnetics'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = 'HEROKU_POSTGRESQL_CYAN_URL'
 db = SQLAlchemy(app)
 auth = HTTPDigestAuth()
 
