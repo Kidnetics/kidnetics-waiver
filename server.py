@@ -22,7 +22,7 @@ def get_pw(username):
 @auth.login_required
 def root():
 	if request.method=='POST':
-		with open("static\\waivers\\"+request.form['name'].replace(' ', '.')+'_'+datetime.now().strftime("%y.%m.%d")+'.json', 'w') as report:
+		with open("static/waivers/"+request.form['name'].replace(' ', '.')+'_'+datetime.now().strftime("%y.%m.%d")+'.json', 'w') as report:
 			form=dict(request.form)
 			form={i:j[0] for i,j in form.items() }
 			form['children']=[dict(zip(['Name', 'DOB'], i.split(','))) for i in form['children'].split(";")]
