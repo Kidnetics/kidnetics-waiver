@@ -1,0 +1,13 @@
+<html>
+<head>
+<title>Waivers Listing</title>
+</head>
+<body>
+<h1>Waivers Listing:</h1>
+<ul>
+	{% for waiver in waivers %}
+		<li><a href='waivers/{{ waiver }}'>{{ waiver }}</a>
+	{% endfor %}
+</ul>
+</body>
+</html>

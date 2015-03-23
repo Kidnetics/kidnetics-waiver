@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response, send_from_directory
 from flask.ext.httpauth import HTTPDigestAuth
 from datetime import datetime
 import json
@@ -29,9 +29,13 @@ def root():
 			report.write(json.dumps(form, sort_keys=True, indent=4, separators=(',', ': ')))
 	return render_template("index.html")
 
-@app.route('/<path>')
-def other(path):
-	return app.send_static_file(path)
+@app.route('/waivers')
+def waivers():
+	return render_template("waivers.html", waivers=os.listdir("static/waivers"))
+
+@app.route('/<path:filename>')  
+def send_file(filename):
+    return send_from_directory(app.static_folder, filename)
 
 if __name__ == '__main__':
 	app.run(debug=True, host='0.0.0.0')
