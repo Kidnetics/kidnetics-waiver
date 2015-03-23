@@ -99,7 +99,7 @@
 				<div class='checkbox'>
 					<label>
 						<input type='checkbox' name='offers' value='offer' id='offers'>
-						<b>If you do NOT want us to send you information on upcoming events of promotions, please check here</b>
+						<b>Please check here if you do NOT want us to send you information on upcoming events or promotions.</b>
 					</label>
 				</div>
 				
@@ -115,12 +115,10 @@
 						<label for='name[]'>Name: </label>\
 						<input type='text' class='form-control name' id='name[]' placeholder='Name' style='margin-right: 25px;'>\
 						<label for='dob[]'>DOB: </label>\
-						<div class='input-group'>\
-							<input type='date' class='form-control dob' id='dob[]' placeholder='' >\
-							<span class='input-group-btn add-or-delete'>\
-								<button class='btn btn-success btn-add' type='button' onclick='add_child()'><span class='glyphicon glyphicon-plus glyph-addon'></span></button>\
-							</span>\
-						</div>\
+						<input type='date' class='form-control dob' id='dob[]' placeholder='' style='margin-right: 15px;'>\
+						<span class='add-or-delete'>\
+							<button class='btn btn-success btn-add' type='button' onclick='add_child()'><span class='glyphicon glyphicon-plus glyph-addon'></span></button>\
+						</span>\
 					</div>"
 		
 		DELETE_CHILD_HTML="<button class='btn btn-danger btn-add' type='button' onclick='delete_child(this)'><span class='glyphicon glyphicon-minus glyph-addon'></span></button>"
@@ -149,7 +147,7 @@
 		}
 		
 		function delete_child(child) {
-			$(child).parent().parent().parent().remove()
+			$(child).parent().parent().remove()
 			num_children--
 		}
 		
