@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, Response
 from flask.ext.httpauth import HTTPDigestAuth
-from flask.ext.sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json
 import os
