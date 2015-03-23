@@ -30,10 +30,12 @@ def root():
 	return render_template("index.html")
 
 @app.route('/waivers')
+@auth.login_required
 def waivers():
 	return render_template("waivers.html", waivers=os.listdir("static/waivers"))
 
 @app.route('/<path:filename>')  
+@auth.login_required
 def send_file(filename):
     return send_from_directory(app.static_folder, filename)
 
