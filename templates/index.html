@@ -47,7 +47,7 @@
 		
 		<div class='row'>
 			<div class='col-md-3'></div>
-			<pre class='waiver col-md-6' id='waiver'>{{ lipsum() }}</pre>
+			<pre class='waiver col-md-6' id='waiver'></pre>
 		</div>
 		
 		<div class='row'>
@@ -139,11 +139,11 @@
 		//$("select").selectpicker()
 		
 		$.get("waiver.txt", function(data) {
-			$("#waiver").text(data)
+			$("#waiver").html(data)
 		})
 		
 		$.get("states.json", function(data) {
-			states=eval("("+data+")")
+			states=data
 			for (i in states) {
 				$("#state").append("<option" + (i=="NJ"?" selected" :"") + ">"+i+"</option>")
 			}
