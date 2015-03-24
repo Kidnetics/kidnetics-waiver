@@ -142,7 +142,7 @@
 			$("#waiver").text(data)
 		})
 		
-		$.get("./states.json", function(data) {
+		$.get("states.json", function(data) {
 			states=eval("("+data+")")
 			for (i in states) {
 				$("#state").append("<option" + (i=="NJ"?" selected" :"") + ">"+i+"</option>")
