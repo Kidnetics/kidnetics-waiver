@@ -38,9 +38,10 @@ def root():
 def waivers():
 	return render_template("waivers.html", waivers=db.waivers.find())
 
-@app.route('/<filename>.json')
+@app.route('/waiver')
 @auth.login_required
-def waiver(filename):
+def waiver():
+	filename=request.args['entry']
 	name, date_added=filename.split(".")
 	name, date_added=name.replace('_', ' '), datetime.combine(datetime.strptime(date_added, "%d-%m-%y"), datetime.min.time())
 	waiver=db.waivers.find({"name": name, "date": date_added})[0]

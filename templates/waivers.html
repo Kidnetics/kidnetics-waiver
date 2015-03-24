@@ -14,6 +14,10 @@
 			font-size: 14pt;
 		}
 		
+		.clickable {
+			cursor: pointer;
+		}
+		
 	</style>
 	
 </head>
@@ -36,13 +40,14 @@
 			
 			<tbody class='list'>
 				{% for waiver in waivers %}
-					<tr onclick="javascript: document.location = '{{ waiver['name'].replace(" ", "_") }}' +'.'+'{{ waiver['date'].strftime('%d-%m-%y') }}'+'.json' ">
+					<tr>
 						<td>{{ waiver['name'] }}</td>
 						<td>{{ waiver['email'] }}</td>
 						<td>{{ waiver['phone'] }}</td>
 						<td>{{ waiver['zip'] }}</td>
-						<td><img src="{{ waiver['signature'] }}" width='100px'></td>
+						<td><a href="{{ waiver['signature'] }}" target='_blank'><img src="{{ waiver['signature'] }}" width='100px'></a></td>
 						<td>{{ waiver['date'].strftime('%m/%d/%y') }}</td>
+						<td><a href="javascript: document.location = '/waiver?entry='+'{{ waiver['name'].replace(" ", "_") }}' +'.'+'{{ waiver['date'].strftime('%d-%m-%y') }}'" title='Download JSON'><span class='glyphicon glyphicon-download-alt'></span></a></td>
 					</tr>
 				{% endfor %}
 			</tbody>
