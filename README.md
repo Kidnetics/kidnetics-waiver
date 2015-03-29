@@ -4,6 +4,6 @@ This is the code for the automated waivers system for kidnetics. Make sure to ch
 
 ##Todo
 
-#. Add full regex validation
-#. Make multi-children interface better
-#. Get API to output from
+1. Add full regex validation
+2. Make multi-children interface better
+3. Get API to output from
