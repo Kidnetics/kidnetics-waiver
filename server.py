@@ -30,7 +30,7 @@ def root():
 			form={i:j[0] for i,j in form.items() }
 			form['children']=[dict(zip(['Name', 'DOB'], i.split(','))) for i in form['children'].split(";")]
 			form['date']=datetime.combine(date.today(), datetime.min.time())
-			for['offers'] = True if 'offers' in form else False
+			form['offers'] = True if 'offers' in form else False
 			db.waivers.insert(form)
 	return render_template("index.html")
 
